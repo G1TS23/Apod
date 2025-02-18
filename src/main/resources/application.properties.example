@@ -1,0 +1,43 @@
+# General
+server.port=8085
+application.name=Apod
+logging.level.org.springframework.security=DEBUG
+# Database
+spring.datasource.url=jdbc:mysql://localhost:3306/apod
+spring.datasource.username=Replace with your DB username
+spring.datasource.password=Replace with your DB password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+# DataBase - Hibernate
+spring.jpa.generate-ddl = true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.javax.persistence.schema-generation.scripts.action=create
+spring.jpa.properties.javax.persistence.schema-generation.scripts.create-target=create.sql
+spring.jpa.properties.javax.persistence.schema-generation.database.action=none
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+# DataBase - Flyway
+spring.flyway.locations=classpath:db/migration,classpath:db/migration/testdata
+spring.flyway.enabled=true
+spring.flyway.out-of-order=true
+# Connections
+cors.allowedOrigins=http://localhost:8080,http://192.168.1.167:8080
+target.url=http://192.168.1.167:8080
+# Security
+jwt.secret=REPLACE_WITH_YOUR_OWN_JWT_SECRET
+# Logging
+logging.level.root=INFO
+logging.level.org.springframework.web=DEBUG
+logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} - %logger{35} - %level - %msg%n
+logging.pattern.file=%d{yyyy-MM-dd HH:mm:ss} - %logger{35} - %level - %msg%n
+# Oauth 2
+oauth.password.placeholder=ThisIsAVerySecurePlaceHolder
+# Oauth 2 # Google
+spring.security.oauth2.client.registration.google.client-id=TO_REPLACE.apps.googleusercontent.com
+spring.security.oauth2.client.registration.google.client-secret=TO_REPLACE
+spring.security.oauth2.client.registration.google.scope=email,profile
+spring.security.oauth2.client.provider.google.authorization-uri=https://accounts.google.com/o/oauth2/auth
+spring.security.oauth2.client.provider.google.token-uri=https://oauth2.googleapis.com/token
+spring.security.oauth2.client.provider.google.user-info-uri=https://www.googleapis.com/oauth2/v3/userinfo
+spring.security.oauth2.client.provider.google.user-name-attribute=sub
+#API
+api.url=https://api.nasa.gov/planetary/apod
+api.key=REPLACE_WITH_YOUR_OWN_API_KEY

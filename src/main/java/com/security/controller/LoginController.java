@@ -11,13 +11,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
@@ -30,7 +29,7 @@ public class LoginController {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    @PostMapping("/api/login")
+    @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDTO loginDto) {
         try {
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
@@ -52,6 +51,11 @@ public class LoginController {
 
             return ResponseEntity.badRequest().body("Invalid username or password");
         }
+    }
+
+    @GetMapping("/logout")
+    public String logoutUser() {
+        return "You have been logged out successfully";
     }
 
 }

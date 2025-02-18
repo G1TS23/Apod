@@ -3,6 +3,18 @@ create table IF NOT exists roles(
     name varchar(255),
 primary key (id)) engine=InnoDB;
 
+create table IF NOT exists apod(
+    id INT not null auto_increment,
+    copyright varchar(255),
+    date varchar(255),
+    explanation text,
+    hdurl varchar(255),
+    media_type varchar(255),
+    service_version varchar(255),
+    title varchar(255),
+    url varchar(255),
+primary key (id)) engine=InnoDB;
+
 create table IF NOT exists users (
     id INT not null auto_increment,
     username varchar(100),
@@ -23,5 +35,5 @@ CREATE TABLE IF NOT exists users_roles (
 INSERT INTO roles (name) VALUES
 ('ROLE_ADMIN'),
 ('ROLE_USER'),
-('ROLE_TESTER')
+('ROLE_SCRAPPER')
 ;

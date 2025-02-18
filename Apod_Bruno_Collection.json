@@ -1,0 +1,579 @@
+{
+  "name": "Apod",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "API (user only)",
+      "items": [
+        {
+          "type": "http",
+          "name": "picure of the day",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8085/api",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "range",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8085/api/range?from=2025-02-01&to=2025-02-03",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "from",
+                "value": "2025-02-01",
+                "type": "query",
+                "enabled": true
+              },
+              {
+                "name": "to",
+                "value": "2025-02-03",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "CRUD (admin only)",
+      "items": [
+        {
+          "type": "http",
+          "name": "Delete apod",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8085/apod/delete/:id",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Read all apod",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8085/apod",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Update apod",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:8085/apod/update",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"id\": 2,\n  \"copyright\":\"TEST UPDATE\",\n  \"date\":\"2025-02-18\",\n  \"explanation\":\"\",\n  \"hdurl\":\"https://apod.nasa.gov/apod/image/2502/SeagullThor_Martino_5149.jpg\",\n  \"media_type\":\"image\",\n  \"service_version\":\"v1\",\n  \"title\":\"Thor's Helmet versus the Seagull\",\n  \"url\":\"https://apod.nasa.gov/apod/image/2502/SeagullThor_Martino_960.jpg\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Create apod",
+          "seq": 5,
+          "request": {
+            "url": "http://localhost:8085/apod/add",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{ \"copyright\":\"TEST CREATE\",\n  \"date\":\"2025-02-18\",\n  \"explanation\":\"\",\n  \"hdurl\":\"https://apod.nasa.gov/apod/image/2502/SeagullThor_Martino_5149.jpg\",\n  \"media_type\":\"image\",\n  \"service_version\":\"v1\",\n  \"title\":\"Thor's Helmet versus the Seagull\",\n  \"url\":\"https://apod.nasa.gov/apod/image/2502/SeagullThor_Martino_960.jpg\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Read apod",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8085/apod/:id",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "USER (anonymous)",
+      "items": [
+        {
+          "type": "folder",
+          "name": "Login",
+          "items": [
+            {
+              "type": "http",
+              "name": "SCRAPPER",
+              "seq": 3,
+              "request": {
+                "url": "http://localhost:8085/users/login",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "json",
+                  "json": "{\n  \"username\": \"scrapper1\",\n  \"password\": \"password\"\n}",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {
+                  "res": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);"
+                },
+                "vars": {},
+                "assertions": [],
+                "tests": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);",
+                "docs": "",
+                "auth": {
+                  "mode": "none"
+                }
+              }
+            },
+            {
+              "type": "http",
+              "name": "USER",
+              "seq": 2,
+              "request": {
+                "url": "http://localhost:8085/users/login",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "json",
+                  "json": "{\n  \"username\": \"user1\",\n  \"password\": \"password\"\n}",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {
+                  "res": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);"
+                },
+                "vars": {},
+                "assertions": [],
+                "tests": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);",
+                "docs": "",
+                "auth": {
+                  "mode": "none"
+                }
+              }
+            },
+            {
+              "type": "http",
+              "name": "ADMIN",
+              "seq": 1,
+              "request": {
+                "url": "http://localhost:8085/users/login",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "json",
+                  "json": "{\n  \"username\": \"admin1\",\n  \"password\": \"password\"\n}",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {
+                  "res": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);"
+                },
+                "vars": {},
+                "assertions": [],
+                "tests": "var jsonData = res.getBody();\nbru.setEnvVar(\"userToken\", jsonData.token);",
+                "docs": "",
+                "auth": {
+                  "mode": "none"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "folder",
+          "name": "Register",
+          "items": [
+            {
+              "type": "http",
+              "name": "USER",
+              "seq": 2,
+              "request": {
+                "url": "http://localhost:8085/users/register",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "json",
+                  "json": "{\n  \"username\": \"user\",\n  \"password\": \"test1234\",\n  \"enabled\": true,\n  \"roles\": [\n    {\n    \"id\": 2,\n    \"name\": \"ROLE_USER\"\n    }\n  ]\n}",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {},
+                "vars": {},
+                "assertions": [],
+                "tests": "",
+                "docs": "",
+                "auth": {
+                  "mode": "none"
+                }
+              }
+            },
+            {
+              "type": "http",
+              "name": "ADMIN",
+              "seq": 1,
+              "request": {
+                "url": "http://localhost:8085/users/register",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "json",
+                  "json": "{\n  \"username\": \"admin\",\n  \"password\": \"test1234\",\n  \"enabled\": true,\n  \"roles\": [\n    {\n    \"id\": 1,\n    \"name\": \"ROLE_ADMIN\"\n    }\n  ]\n}",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {},
+                "vars": {},
+                "assertions": [],
+                "tests": "",
+                "docs": "",
+                "auth": {
+                  "mode": "none"
+                }
+              }
+            },
+            {
+              "type": "http",
+              "name": "SCRAPPER",
+              "seq": 3,
+              "request": {
+                "url": "http://localhost:8085/users/register",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "mode": "json",
+                  "json": "{\n  \"username\": \"scrapper\",\n  \"password\": \"test1234\",\n  \"enabled\": true,\n  \"roles\": [\n    {\n    \"id\": 3,\n    \"name\": \"ROLE_SCRAPPER\"\n    }\n  ]\n}",
+                  "formUrlEncoded": [],
+                  "multipartForm": [],
+                  "file": []
+                },
+                "script": {},
+                "vars": {},
+                "assertions": [],
+                "tests": "",
+                "docs": "",
+                "auth": {
+                  "mode": "none"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "http",
+          "name": "view credentials",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8085/credentials/view",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Logout",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8085/users/logout",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {
+              "res": "bru.setEnvVar(\"userToken\", null);"
+            },
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "SCRAP (scrapper only)",
+      "items": [
+        {
+          "type": "http",
+          "name": "scrap apod of the day",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8085/api/scrap/today",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "scrap range",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8085/api/scrap/range?from=2025-02-11&to=2025-02-14",
+            "method": "POST",
+            "headers": [],
+            "params": [
+              {
+                "name": "from",
+                "value": "2025-02-11",
+                "type": "query",
+                "enabled": true
+              },
+              {
+                "name": "to",
+                "value": "2025-02-14",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": [],
+              "file": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "docs": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "{{userToken}}"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "activeEnvironmentUid": "hWns5WBmhiXrhccxdyu3W",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "userToken",
+          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzY3JhcHBlcjEiLCJpYXQiOjE3Mzk4OTUzODYsImV4cCI6MTczOTg5ODk4Niwicm9sZXMiOlsiUk9MRV9TQ1JBUFBFUiJdfQ.I-UU_gu81knaAysnnx6bwE3S01EgPSXNg_xBYvYdk9buVYkKVatfycDpP_DPv9oNE1idP0h-qcMHbH0yOm0U7A",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "Apod"
+    }
+  ],
+  "brunoConfig": {
+    "version": "1",
+    "name": "Apod",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0.0031919479370117188,
+    "filesCount": 15
+  }
+}
