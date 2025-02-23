@@ -22,6 +22,7 @@ public class ApodMapping {
 
     public ApodDTO entityToDTO(Apod entity) {
         return ApodDTO.builder()
+                .id(entity.getId())
                 .copyright(entity.getCopyright())
                 .date(entity.getDate())
                 .explanation(entity.getExplanation())

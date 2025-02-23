@@ -2,11 +2,13 @@ package com.security.service;
 
 import com.security.dto.ApodDTO;
 import com.security.entity.Apod;
+import com.security.exception.NoApodException;
 import com.security.mapping.ApodMapping;
 import com.security.repository.ApodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,16 +18,21 @@ public class ApodService {
     private final ApodRepository apodRepository;
     private final ApodMapping apodMapping;
 
-    public ApodDTO getApodById(Long id) {
+    public ApodDTO getApodById(Long id) throws NoApodException {
         Apod apod = apodRepository.findById(id).orElse(null);
         if (apod == null) {
-            return null;
+            throw new NoApodException("Apod pas trouvé");
         }
         return apodMapping.entityToDTO(apod);
     }
 
-    public Iterable<Apod> getAllApods() {
-        return apodRepository.findAll();
+    public List<ApodDTO> getAllApods() {
+        Iterable<Apod> apods = apodRepository.findAll();
+        List<ApodDTO> apodDTOS = new ArrayList<>();
+        for (Apod apod : apods) {
+            apodDTOS.add(apodMapping.entityToDTO(apod));
+        }
+        return apodDTOS;
     }
 
     public String add(ApodDTO apod) {
@@ -34,19 +41,19 @@ public class ApodService {
         return "Apod added successfully";
     }
 
-    public String delete(Long id) {
+    public String delete(Long id) throws NoApodException {
         Apod apod = apodRepository.findById(id).orElse(null);
         if (apod == null) {
-            return "Apod not found";
+            throw new NoApodException("Apod pas trouvé");
         }
         apodRepository.delete(apod);
         return "Apod deleted";
     }
 
-    public String update(ApodDTO apod) {
+    public String update(ApodDTO apod) throws NoApodException {
         Apod updatedApod = apodRepository.findById(apod.getId()).orElse(null);
         if (updatedApod == null) {
-            return "Apod not found";
+            throw new NoApodException("Apod pas trouvé");
         }
         updatedApod.setCopyright(apod.getCopyright());
         updatedApod.setDate(apod.getDate());
