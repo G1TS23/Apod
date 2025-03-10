@@ -19,10 +19,8 @@ public class ApodService {
     private final ApodMapping apodMapping;
 
     public ApodDTO getApodById(Long id) throws NoApodException {
-        Apod apod = apodRepository.findById(id).orElse(null);
-        if (apod == null) {
-            throw new NoApodException("Apod pas trouvé");
-        }
+        Apod apod = apodRepository.findById(id)
+                .orElseThrow(() -> new NoApodException("Apod pas trouvé"));
         return apodMapping.entityToDTO(apod);
     }
 
@@ -42,19 +40,15 @@ public class ApodService {
     }
 
     public String delete(Long id) throws NoApodException {
-        Apod apod = apodRepository.findById(id).orElse(null);
-        if (apod == null) {
-            throw new NoApodException("Apod pas trouvé");
-        }
+        Apod apod = apodRepository.findById(id)
+                .orElseThrow(() -> new NoApodException("Apod pas trouvé"));
         apodRepository.delete(apod);
         return "Apod deleted";
     }
 
     public String update(ApodDTO apod) throws NoApodException {
-        Apod updatedApod = apodRepository.findById(apod.getId()).orElse(null);
-        if (updatedApod == null) {
-            throw new NoApodException("Apod pas trouvé");
-        }
+        Apod updatedApod = apodRepository.findById(apod.getId())
+                .orElseThrow(() -> new NoApodException("Apod pas trouvé"));
         updatedApod.setCopyright(apod.getCopyright());
         updatedApod.setDate(apod.getDate());
         updatedApod.setExplanation(apod.getExplanation());
