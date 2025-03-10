@@ -1,6 +1,7 @@
 package com.apod.service;
 
 import com.apod.dto.ApodDTO;
+import com.apod.util.DateValidator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,12 @@ public class ApiService {
 
     private final RestClient restClient;
     private final ApodService apodService;
+    private final DateValidator dateValidator;
 
-    public ApiService(RestClient restClient, ApodService apodService) {
+    public ApiService(RestClient restClient, ApodService apodService, DateValidator dateValidator) {
         this.restClient = restClient;
         this.apodService = apodService;
+        this.dateValidator = dateValidator;
     }
 
     public String getTodayApod(){
@@ -32,11 +35,14 @@ public class ApiService {
     }
 
     public String getRangeApod(String from, String to){
-        return restClient
-                .get()
-                .uri(TARGET_HOST + "?api_key=" + API_KEY + "&start_date=" + from + "&end_date=" + to)
-                .retrieve()
-                .body(String.class);
+        if(dateValidator.isValidDate(from) && dateValidator.isValidDate(to)) {
+            return restClient
+                    .get()
+                    .uri(TARGET_HOST + "?api_key=" + API_KEY + "&start_date=" + from + "&end_date=" + to)
+                    .retrieve()
+                    .body(String.class);
+        }
+        return "Date format not valid (YYYY-MM-DD)";
     }
 
     public String scrapeTodayApod(){
@@ -50,14 +56,18 @@ public class ApiService {
     }
 
     public String scrapeRangeApod(String from, String to){
-        List<ApodDTO> apodDTOList = restClient
-                .get()
-                .uri(TARGET_HOST + "?api_key=" + API_KEY + "&start_date=" + from + "&end_date=" + to)
-                .retrieve()
-                .body(new ParameterizedTypeReference<List<ApodDTO>>() {});
+        if(dateValidator.isValidDate(from) && dateValidator.isValidDate(to)) {
+            List<ApodDTO> apodDTOList = restClient
+                    .get()
+                    .uri(TARGET_HOST + "?api_key=" + API_KEY + "&start_date=" + from + "&end_date=" + to)
+                    .retrieve()
+                    .body(new ParameterizedTypeReference<List<ApodDTO>>() {
+                    });
 
-        apodDTOList.forEach(apodDTO -> apodService.add(apodDTO));
-        return "Scrapped from " + from + " to " + to;
+            apodDTOList.forEach(apodDTO -> apodService.add(apodDTO));
+            return "Scrapped from " + from + " to " + to;
+        }
+        return "Date format not valid (YYYY-MM-DD)";
     }
 
 }
