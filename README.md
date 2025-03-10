@@ -29,9 +29,23 @@ cd apod
 4. Replace information in `application.properties` such as :
 
 * Your Database information
+```
+5 # Database
+6 spring.datasource.url=jdbc:mysql://localhost:3306/apod
+7 spring.datasource.username=REPLACE_WITHI_YOUR_DB_USERNAME
+8 spring.datasource.password=REPLACE_WITHI_YOUR_DB_PASSWORD
+```
 * Your own JWT Secret
+```
+24 # Security
+25 jwt.secret=REPLACE_WITH_YOUR_OWN_JWT_SECRET
+```
 * Your own NASA API Key from [https://api.nasa.gov](https://api.nasa.gov)
-
+```
+41 #API
+42 api.url=https://api.nasa.gov/planetary/apod
+43 api.key=REPLACE_WITH_YOUR_OWN_API_KEY
+```
 
 5. Run your mysql server and create a schema named `apod`
 

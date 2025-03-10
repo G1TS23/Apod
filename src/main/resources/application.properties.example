@@ -4,8 +4,8 @@ application.name=Apod
 logging.level.org.springframework.security=DEBUG
 # Database
 spring.datasource.url=jdbc:mysql://localhost:3306/apod
-spring.datasource.username=Replace with your DB username
-spring.datasource.password=Replace with your DB password
+spring.datasource.username=REPLACE_WITHI_YOUR_DB_USERNAME
+spring.datasource.password=REPLACE_WITHI_YOUR_DB_PASSWORD
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 # DataBase - Hibernate
 spring.jpa.generate-ddl = true
