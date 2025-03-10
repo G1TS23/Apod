@@ -1,6 +1,6 @@
-package com.security.repository;
+package com.apod.repository;
 
-import com.security.entity.Apod;
+import com.apod.entity.Apod;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

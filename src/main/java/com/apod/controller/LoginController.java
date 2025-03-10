@@ -1,10 +1,10 @@
-package com.security.controller;
+package com.apod.controller;
 
-import com.security.config.JwtTokenProvider;
-import com.security.dto.AuthResponseDTO;
-import com.security.dto.LoginDTO;
-import com.security.entity.User;
-import com.security.service.UserService;
+import com.apod.config.JwtTokenProvider;
+import com.apod.dto.AuthResponseDTO;
+import com.apod.dto.LoginDTO;
+import com.apod.entity.User;
+import com.apod.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

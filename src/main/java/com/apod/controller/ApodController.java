@@ -1,8 +1,8 @@
-package com.security.controller;
+package com.apod.controller;
 
-import com.security.dto.ApodDTO;
-import com.security.exception.NoApodException;
-import com.security.service.ApodService;
+import com.apod.dto.ApodDTO;
+import com.apod.exception.NoApodException;
+import com.apod.service.ApodService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

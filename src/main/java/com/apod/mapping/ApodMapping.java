@@ -1,7 +1,7 @@
-package com.security.mapping;
+package com.apod.mapping;
 
-import com.security.dto.ApodDTO;
-import com.security.entity.Apod;
+import com.apod.dto.ApodDTO;
+import com.apod.entity.Apod;
 import org.springframework.stereotype.Component;
 
 @Component

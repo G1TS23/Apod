@@ -1,7 +1,7 @@
-package com.security.controller;
+package com.apod.controller;
 
-import com.security.dto.ApodDTO;
-import com.security.service.ApodService;
+import com.apod.dto.ApodDTO;
+import com.apod.service.ApodService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.bind.annotation.*;

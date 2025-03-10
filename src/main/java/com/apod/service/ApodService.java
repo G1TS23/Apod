@@ -1,10 +1,10 @@
-package com.security.service;
+package com.apod.service;
 
-import com.security.dto.ApodDTO;
-import com.security.entity.Apod;
-import com.security.exception.NoApodException;
-import com.security.mapping.ApodMapping;
-import com.security.repository.ApodRepository;
+import com.apod.dto.ApodDTO;
+import com.apod.entity.Apod;
+import com.apod.exception.NoApodException;
+import com.apod.mapping.ApodMapping;
+import com.apod.repository.ApodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
