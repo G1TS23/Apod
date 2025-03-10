@@ -1,7 +1,6 @@
 # Astronomy Picture of the Day (APOD)
 
 This API is a Gradle project that extends [Nasa's APOD API](https://github.com/nasa/apod-api).
-&nbsp;
 
 ## Table of contents
 
@@ -50,14 +49,14 @@ There's three different roles :
 * USER can call two endpoints that bounce to Nasa's API :
     * **/api** : the picture of day
     * **/api/range?from=2025-02-01&to=2025-02-03** : pictures or videos within a time range)
-* SCRAPPER has almost th same endpoints but that stores object in database :
+* SCRAPPER has almost the same endpoints but that stores object in database :
     * **/api/scrap/today**
     * **/api/scrap/range?from=2025-02-11&to=2025-02-14**
 
-#### Bruno collection
+#### API collection
 
 In root directory there's a collection ``Apod_Bruno_Collection.json`` you can import in [Bruno](https://www.usebruno.com)
-or [Postman](https://www.postman.com) to test the API. In order to store the userToken after login you to add
+or [Postman](https://www.postman.com) to test the API. In order to store the userToken after login you to have to add
 this post-request script :
 
 * Bruno :
