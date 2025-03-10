@@ -1,71 +1,37 @@
 package com.apod.controller;
 
-import com.apod.dto.ApodDTO;
-import com.apod.service.ApodService;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.ParameterizedTypeReference;
+import com.apod.service.ApiService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestClient;
-
-import java.util.List;
 
 @RestController()
 @RequestMapping(path = "/api")
 public class ApiController {
 
-    @Value("${api.url}")
-    private String TARGET_HOST;
-    @Value("${api.key}")
-    private String API_KEY;
-
-    private final RestClient restClient;
-    private final ApodService apodService;
+    private final ApiService apiService;
 
 
-    public ApiController(RestClient restClient, ApodService apodService) {
-        this.restClient = restClient;
-        this.apodService = apodService;
+    public ApiController(ApiService apiService) {
+        this.apiService = apiService;
     }
 
     @GetMapping(path = "")
     public String getApi() {
-        return restClient
-                .get()
-                .uri(TARGET_HOST + "?api_key=" + API_KEY)
-                .retrieve()
-                .body(String.class);
+        return apiService.getTodayApod();
     }
 
     @GetMapping(path = "/range")
     public String getApodRange(@RequestParam String from, @RequestParam String to) {
-        return restClient
-                .get()
-                .uri(TARGET_HOST + "?api_key=" + API_KEY + "&start_date=" + from + "&end_date=" + to)
-                .retrieve()
-                .body(String.class);
+        return apiService.getRangeApod(from, to);
     }
 
     @PostMapping(path = "/scrap/today")
     public String saveApod() {
-        ApodDTO apodDTO = restClient
-                .get()
-                .uri(TARGET_HOST + "?api_key=" + API_KEY)
-                .retrieve()
-                .body(ApodDTO.class);
-        apodService.add(apodDTO);
-        return apodDTO.toString();
+        return apiService.scrapeTodayApod();
     }
 
     @PostMapping(path = "/scrap/range")
     public String scrapRange(@RequestParam String from, @RequestParam String to) {
-        List<ApodDTO> apodDTOList = restClient
-                .get()
-                .uri(TARGET_HOST + "?api_key=" + API_KEY + "&start_date=" + from + "&end_date=" + to)
-                .retrieve()
-                .body(new ParameterizedTypeReference<List<ApodDTO>>() {});
-
-        apodDTOList.forEach(apodDTO -> apodService.add(apodDTO));
-        return "Scrapped !!!";
+        return apiService.scrapeRangeApod(from, to);
     }
 
 }
