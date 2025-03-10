@@ -49,14 +49,7 @@ public class ApodService {
     public String update(ApodDTO apod) throws NoApodException {
         Apod updatedApod = apodRepository.findById(apod.getId())
                 .orElseThrow(() -> new NoApodException("Apod pas trouvé"));
-        updatedApod.setCopyright(apod.getCopyright());
-        updatedApod.setDate(apod.getDate());
-        updatedApod.setExplanation(apod.getExplanation());
-        updatedApod.setHdurl(apod.getHdurl());
-        updatedApod.setMedia_type(apod.getMedia_type());
-        updatedApod.setService_version(apod.getService_version());
-        updatedApod.setTitle(apod.getTitle());
-        updatedApod.setUrl(apod.getUrl());
+        apodMapping.updateEntityFromDTO(apod, updatedApod);
         apodRepository.save(updatedApod);
         return "Apod updated successfully";
     }

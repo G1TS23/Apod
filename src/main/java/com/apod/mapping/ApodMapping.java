@@ -33,4 +33,15 @@ public class ApodMapping {
                 .url(entity.getUrl())
                 .build();
     }
+
+    public void updateEntityFromDTO(ApodDTO apodDTO, Apod apod) {
+        apod.setCopyright(apodDTO.getCopyright());
+        apod.setDate(apodDTO.getDate());
+        apod.setExplanation(apodDTO.getExplanation());
+        apod.setHdurl(apodDTO.getHdurl());
+        apod.setMedia_type(apodDTO.getMedia_type());
+        apod.setService_version(apodDTO.getService_version());
+        apod.setTitle(apodDTO.getTitle());
+        apod.setUrl(apodDTO.getUrl());
+    }
 }
