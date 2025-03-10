@@ -12,8 +12,4 @@ public class ApodApplication {
         SpringApplication.run(ApodApplication.class, args);
     }
 
-    @Bean
-    public RestClient restClient() {
-        return RestClient.create();
-    }
 }
