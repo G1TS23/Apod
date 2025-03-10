@@ -1,4 +1,4 @@
-package com.security.entity;
+package com.apod.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

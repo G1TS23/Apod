@@ -1,8 +1,8 @@
-package com.security.service;
+package com.apod.service;
 
-import com.security.entity.Role;
-import com.security.entity.User;
-import com.security.repository.UserRepository;
+import com.apod.entity.Role;
+import com.apod.entity.User;
+import com.apod.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

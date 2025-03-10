@@ -1,10 +1,10 @@
-package com.security.website;
+package com.apod.website;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WebsiteApplicationTests {
+class ApodApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,7 +1,7 @@
-package com.security.repository;
+package com.apod.repository;
 
 
-import com.security.entity.User;
+import com.apod.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {
