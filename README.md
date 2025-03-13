@@ -1,13 +1,14 @@
 # Astronomy Picture of the Day (APOD)
 
-This API is a Gradle project that extends [Nasa's APOD API](https://github.com/nasa/apod-api).
+This API is a Gradle project using [Nasa's APOD API](https://github.com/nasa/apod-api).
 
 ## Table of contents
 
 1. [Getting Started](#getting_started)
 2. [Docs](#docs)
+   * [Roles](#roles)
+   * [API collection](#collection)
 3. [Author](#author)
-   &nbsp;
 
 ### Getting started <a name="getting_started"></a>
 
@@ -24,7 +25,6 @@ cd apod
 ```
 
 3. Rename `application.properties.example` (in /src/main/resources/) to `application.properties`
-
 
 4. Replace information in `application.properties` such as :
 
@@ -49,13 +49,11 @@ cd apod
 
 5. Run your mysql server and create a schema named `apod`
 
-
 6. Run the application
-   &nbsp;
 
 ### Docs <a name="docs"></a>
 
-#### Roles
+#### Roles <a name="roles"></a>
 
 There's three different roles :
 
@@ -67,7 +65,7 @@ There's three different roles :
     * **/api/scrap/today**
     * **/api/scrap/range?from=2025-02-11&to=2025-02-14**
 
-#### API collection
+#### API collection <a name="collection"></a>
 
 In root directory there's a collection ``Apod_Bruno_Collection.json`` you can import in [Bruno](https://www.usebruno.com)
 or [Postman](https://www.postman.com) to test the API. In order to store the userToken after login you to have to add
@@ -86,7 +84,14 @@ bru.setEnvVar("userToken", jsonData.token);
 var jsonData = pm.response.json();
 pm.environment.set("userToken", jsonData.token);
 ```
-&nbsp;
+
+###### Folders
+
+* API : only for user role, bounce request from NASA's API
+* CRUD : only for admin role, manipulate database
+* SCRAP : only for scrapper role, retrieve data from NASA's API and store it in database
+* USER : log in, register, view credentials and log out
+
 ### Author <a name="author"></a>
 
 * Olivier Falahi (based on code by [Simon Bédard](https://github.com/JavaKhanStudio/Spring_Exemple_Security))
