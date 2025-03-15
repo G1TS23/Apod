@@ -84,6 +84,7 @@ bru.setEnvVar("userToken", jsonData.token);
 var jsonData = pm.response.json();
 pm.environment.set("userToken", jsonData.token);
 ```
+In the collection properties create an environment variable called userToken.
 
 ###### Folders
 
